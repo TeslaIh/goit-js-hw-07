@@ -12,20 +12,24 @@ galleryContainer.insertAdjacentHTML('beforeend', galleryList);
 function createGalleryImagesList(galleryItems) {
     return galleryItems.map(({ preview, original, description }) => {
         return `
-  <div class = "gallery__item">
+  <li class = "gallery__item">
   <a class = "gallery__link" href="${original}">
   <img
   class="gallery__image"
   src="${preview}"
   data-source="${original}"
   alt="${description}"
+  title="${description}"
   />
   </a>
-  </div>
+  </li>
   `;
     }).join('');
 }
 
-var lightBox = new SimpleLightbox('.gallery a', {
+var lightbox = new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionsData:"alt",
+    captionPosition:'bottom',
     captionDelay: 250
 });
